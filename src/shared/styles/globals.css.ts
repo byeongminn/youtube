@@ -1,4 +1,5 @@
 import { globalStyle } from "@vanilla-extract/css";
+import { gray } from "./color";
 
 globalStyle("*", {
   boxSizing: "border-box",
@@ -9,4 +10,6 @@ globalStyle("*", {
 globalStyle("html, body", {
   maxWidth: "100vw",
   minHeight: "100vh",
+
+  backgroundColor: gray[50],
 });

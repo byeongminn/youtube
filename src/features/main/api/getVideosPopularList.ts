@@ -1,6 +1,10 @@
 import { API_BASE_URL } from "@/shared/api/constants";
 import { VideoThumbnail } from "@/shared/api/youtube/types/item";
-import { ListPageApiInfo } from "@/shared/api/youtube/types/list";
+import {
+  ListPageApiInfo,
+  ListResponse,
+  VideoListItem,
+} from "@/shared/api/youtube/types/list";
 import { youtube_v3 } from "googleapis";
 import queryString from "query-string";
 
@@ -10,21 +14,11 @@ export type GetVideosPopularListRequestParams = Pick<
 >;
 
 export type PopularListItem = {
-  videoId: string;
-  title: string;
-  description: string;
-  channelId: string;
-  channelTitle: string;
-  thumbnail: VideoThumbnail;
-  publishedAt: string;
-  publishedAtDisplayText: string; // 1개월 전
   viewCount: number;
   viewCountDisplayText: string; // 23만
-};
+} & VideoListItem;
 
-export type GetVideosPopularListResponse = {
-  lists: PopularListItem[];
-} & ListPageApiInfo;
+export type GetVideosPopularListResponse = ListResponse<PopularListItem>;
 
 export const getVideosPopularListURL = `${API_BASE_URL}/api/videos/popular-list`;
 

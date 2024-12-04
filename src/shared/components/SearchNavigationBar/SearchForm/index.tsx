@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import * as s from "./style.css";
+import { getSearchPageLink } from "@/shared/utils/link/page";
 
 export const SearchForm = () => {
   const searchParams = useSearchParams();
@@ -16,7 +17,9 @@ export const SearchForm = () => {
     const queryInput = form.elements.namedItem("query") as HTMLInputElement;
     const queryValue = queryInput?.value ?? "";
 
-    console.log("검색: ", queryValue);
+    if (queryValue !== "") {
+      router.push(getSearchPageLink({ q: queryValue }));
+    }
   };
 
   return (

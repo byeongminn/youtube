@@ -1,3 +1,4 @@
+import { gray } from "@/shared/styles/color";
 import { f } from "@/shared/styles/functions";
 import { responsiveStyle } from "@/shared/styles/functions/layout.css";
 import { style } from "@vanilla-extract/css";
@@ -15,7 +16,7 @@ export const navigationBar = style([
     top: 0,
     left: 0,
     height: NAVIGATION_BAR_HEIGHT,
-    // backgroundColor: vars.colors.$scale.gray[50],
+    backgroundColor: gray[50],
   },
   responsiveStyle({
     sm: {
