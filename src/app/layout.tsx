@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/shared/styles";
 import { QueryProvider } from "@/shared/components/QueryProvider";
+import { MSWProvider } from "@/shared/components/MSWProvider";
 
 export const metadata: Metadata = {
   title: "YouTube",
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <QueryProvider>{children}</QueryProvider>
+        <MSWProvider>
+          <QueryProvider>{children}</QueryProvider>
+        </MSWProvider>
       </body>
     </html>
   );
