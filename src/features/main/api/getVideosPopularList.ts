@@ -1,10 +1,6 @@
 import { API_BASE_URL } from "@/shared/api/constants";
-import { VideoThumbnail } from "@/shared/api/youtube/types/item";
-import {
-  ListPageApiInfo,
-  ListResponse,
-  VideoListItem,
-} from "@/shared/api/youtube/types/list";
+import { VideoStatistics } from "@/shared/api/youtube/types/item";
+import { ListResponse, VideoListItem } from "@/shared/api/youtube/types/list";
 import { youtube_v3 } from "googleapis";
 import queryString from "query-string";
 
@@ -13,10 +9,11 @@ export type GetVideosPopularListRequestParams = Pick<
   "maxResults" | "pageToken"
 >;
 
-export type PopularListItem = {
-  viewCount: number;
-  viewCountDisplayText: string; // 23만
-} & VideoListItem;
+export type PopularListItem = Pick<
+  VideoStatistics,
+  "viewCount" | "viewCountDisplayText"
+> &
+  VideoListItem;
 
 export type GetVideosPopularListResponse = ListResponse<PopularListItem>;
 
